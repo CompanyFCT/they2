@@ -1,0 +1,4 @@
+.env
+node_modules
+public/stylesheets/style.css
+public/stylesheets/upload.css
