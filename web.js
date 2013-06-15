@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mapping routes
 app.get('/', routes.render.index._);
+app.post('/', routes.render.index._);
 
 
 // if ('development' == app.get('env')) {

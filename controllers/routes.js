@@ -1,4 +1,4 @@
 exports.render = {
-  index: require('./index.js'),
+  index: require('./index.js')
 };
 

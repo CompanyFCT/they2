@@ -1,0 +1,45 @@
+.container.container-form
+  form.form-horizontal
+
+    .control-group
+      label.control-label(for='inputNome') Nome
+      .controls
+        input#inputNome(type='text', placeholder='Nome completo')
+
+    .control-group
+      label.control-label(for='inputEmail') Email
+      .controls
+        input#inputEmail(type='email', placeholder='Email para contato')
+
+    .control-group
+      label.control-label(for='inputTel') Telefone
+      .controls
+        input#inputTel(type='text', placeholder='Telefone para contato')
+
+    .control-group
+      label.control-label(for='inputAge') Faixa etária
+      .controls
+        .row-fluid
+          div.input-age
+            input#inputAge.span1(type='text', placeholder='0-18')
+            input#inputAge.span1(type='text', placeholder='19-23')
+            input#inputAge.span1(type='text', placeholder='24-28')
+            input#inputAge.span1(type='text', placeholder='29-33')
+            input#inputAge.span1(type='text', placeholder='34-38')
+            input#inputAge.span1(type='text', placeholder='39-43')
+            input#inputAge.span1(type='text', placeholder='44-48')
+            input#inputAge.span1(type='text', placeholder='49-53')
+            input#inputAge.span1(type='text', placeholder='54-58')
+            input#inputAge.span1(type='text', placeholder='+ 59')
+
+    .control-group
+      .form-actions(style="border-top:0px;background-color:#fff;")
+        button.btn.btn-primary.btn-large(type='submit') Fazer cotação
+
+//- script
+//-   $(function(){
+//-     $("ul#age li a").click(function(){
+//-       $(".btn:first-child").text($(this).text());
+//-       $(".btn:first-child").val($(this).text());
+//-    });
+//-   });

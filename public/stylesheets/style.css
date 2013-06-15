@@ -5274,3 +5274,26 @@ body div#wrap header div.fb {
   margin-left: 0px;
   margin-top: 9px;
 }
+body div#wrap .container-form {
+  margin-top: 5%;
+}
+body div#wrap .input-age ::-webkit-input-placeholder {
+  /* WebKit browsers */
+
+  font-size: 12px;
+}
+body div#wrap .input-age :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+
+  font-size: 12px;
+}
+body div#wrap .input-age ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+
+  font-size: 12px;
+}
+body div#wrap .input-age :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+
+  font-size: 12px;
+}
