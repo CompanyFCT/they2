@@ -20,6 +20,7 @@
     h4 Preencha o formulário com as características do seu plano e dados para contato
     h4 Aguarde que um de nossos consultores entrará em contato
   
+  //- form#form-plan.form-horizontal(method="POST", action="/plan")
   form#form-plan.form-horizontal
     .container-form
       .control-group
@@ -57,9 +58,10 @@
         .form-actions(style="border-top:0px;background-color:#fff;")
           .btn-toolbar
             .btn-group
-              button.btn.btn-primary.btn-large(type='submit') Enviar
+              //- button#send.btn.btn-primary.btn-large(type='button',data-toggle="modal", data-target="#congrats") Enviar
+              button#send.btn.btn-primary.btn-large(type='button') Enviar
             .btn-group
-              button.btn.btn-primary.btn-large.disabled(type='submit') Cotação Online
+              button#online.btn.btn-primary.btn-large.disabled(type='button') Cotação Online (em breve)
 
 //- script
 //-   $(function(){
@@ -68,3 +70,57 @@
 //-       $(".btn:first-child").val($(this).text());
 //-    });
 //-   });
+
+#congrats.modal.hide.fade
+  .modal-header
+    h4#thanks 
+  .modal-body
+    h3 Em breve um de nossos consultores entrará em contato
+  .modal-footer
+    a#closeModal.btn.btn-primary="Fechar"
+
+script
+  $("#send").on('click', function(){
+    var name=$("#inputNome").val().toUpperCase();
+    var mail=$("#inputEmail").val();
+    var phone=$("#inputPhone").val();
+
+    //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
+    $.ajax({
+      type: "post",
+      url: "/plan",
+      data: JSON.stringify({
+        name: name,
+        email: mail,
+        phone: phone
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
+        $("#congrats").modal('show');
+      },
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
+    });
+
+    return false;
+  });
+
+  $("#online").on('click', function(){
+    return false;
+  });
+
+  $("#closeModal").on('click', function(){
+    $("#congrats").modal('hide');
+  });
+
+  $("#congrats").on('hide', function(){
+    //resolve this. better way to solve it
+    $("#thanks").text("");
+    $("#inputNome").val("");
+    $("#inputEmail").val("");
+    $("#inputPhone").val("");
+  });
+

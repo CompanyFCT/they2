@@ -4,7 +4,8 @@
 
 var express = require('express')
   , mongoose = require('mongoose')
-  , routes = require('./controllers/routes')
+  // , routes = require('./controllers/routes')
+  , controllers = require('./controllers/index')
   , locals = require('./base/locals').setLocals
   , path = require('path')
   , less = require('less-middleware')
@@ -29,8 +30,9 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //mapping routes
-app.get('/', routes.render.index._);
-app.post('/', routes.render.index._);
+app.get('/', controllers._);
+app.post('/', controllers._);
+app.post('/plan', controllers.plan);
 
 
 // if ('development' == app.get('env')) {
