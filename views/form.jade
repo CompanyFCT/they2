@@ -96,9 +96,12 @@ script
       }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: function(data){        
-        $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
-        $("#congrats").modal('show');
+      success: function(data){
+      console.log(data.code);
+        if(data.code==200){
+          $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
+          $("#congrats").modal('show');
+        }
       },
       failure: function(errMsg) {
         console.log(errMsg);

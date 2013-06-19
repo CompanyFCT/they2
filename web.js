@@ -6,7 +6,6 @@
 
 var express = require('express')
   , mongoose = require('mongoose')
-  // , routes = require('./controllers/routes')
   , controllers = require('./controllers/index')
   , locals = require('./base/locals').setLocals
   , path = require('path')
@@ -33,10 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mapping routes
 app.get('/', controllers._);
-app.get('/500', controllers.error);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);
-app.post('/error', controllers.error);
 
 
 // if ('development' == app.get('env')) {
