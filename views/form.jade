@@ -38,6 +38,16 @@
         .controls
           input#inputTel(type='text', placeholder='Telefone para contato')
 
+      .control-group
+        label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
+        .controls
+          .btn-group(style="right:15%;")
+            .btn.disabled São Paulo
+            .btn.dropdown-toggle.disabled(data-toggle="dropdown")
+              span.caret
+            ul.dropdown-menu
+
+
       //- .control-group
       //-   label.control-label(for='inputAge') Faixa etária
       //-   .controls
@@ -97,7 +107,6 @@ script
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data){
-      console.log(data.code);
         if(data.code==200){
           $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
           $("#congrats").modal('show');
