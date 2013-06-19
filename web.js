@@ -48,7 +48,7 @@ app.post('/plan', controllers.plan);
 // } 
 
 //mongodb config
-var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/planovida';
+var mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/planovida';
 mongoose.connect(mongoURI, function (err, res) {
   if (err) { 
     console.log ('ERROR connecting to: ' + mongoURI + '. ' + err);
