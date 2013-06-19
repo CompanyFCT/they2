@@ -1,3 +1,5 @@
+//CSRF protection!
+
 /**
  * Module dependencies.
  */
@@ -31,8 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mapping routes
 app.get('/', controllers._);
+app.get('/500', controllers.error);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);
+app.post('/error', controllers.error);
 
 
 // if ('development' == app.get('env')) {

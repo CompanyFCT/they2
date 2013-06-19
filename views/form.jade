@@ -83,7 +83,7 @@ script
   $("#send").on('click', function(){
     var name=$("#inputNome").val().toUpperCase();
     var mail=$("#inputEmail").val();
-    var phone=$("#inputPhone").val();
+    var phone=$("#inputTel").val();
 
     //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
     $.ajax({
@@ -96,7 +96,7 @@ script
       }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: function(data){
+      success: function(data){        
         $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
         $("#congrats").modal('show');
       },
@@ -121,6 +121,5 @@ script
     $("#thanks").text("");
     $("#inputNome").val("");
     $("#inputEmail").val("");
-    $("#inputPhone").val("");
+    $("#inputTel").val("");
   });
-

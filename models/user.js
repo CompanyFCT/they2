@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
 module.exports = mongoose.model('User', new mongoose.Schema({
-  name: String
+  name: String,
+  email: String,
+  phone: String
 }));
