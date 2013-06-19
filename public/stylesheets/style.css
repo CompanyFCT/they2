@@ -6303,17 +6303,31 @@ body div#wrap .intro {
   margin-bottom: 20px;
 }
 body div#wrap .why p {
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #fff;
+  color: #666;
+}
+body div#wrap .why h3 {
+  text-align: center;
+  color: #666;
 }
 body div#wrap .okay i {
   color: #77c338;
+}
+body div#wrap .form-title h4 {
+  text-align: center;
+}
+body div#wrap .form-title h4:first-child {
+  margin-top: 40px;
+}
+body div#wrap .form-title h4:last-child {
+  margin-bottom: 35px;
 }
 body div#wrap .content-intro {
   margin-top: 35px;
   color: #000;
 }
 body div#wrap .container-form {
-  margin-top: 5%;
+  display: inline-block;
 }
 body div#wrap .input-age ::-webkit-input-placeholder {
   /* WebKit browsers */
@@ -6334,4 +6348,7 @@ body div#wrap .input-age :-ms-input-placeholder {
   /* Internet Explorer 10+ */
 
   font-size: 12px;
+}
+body div#wrap form#form-plan {
+  text-align: center;
 }
