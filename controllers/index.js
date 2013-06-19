@@ -13,7 +13,7 @@ exports.plan = function(req, res){
   //validations
   var json = {
     name: req.body.name, 
-    email: req.body.email, 
+    email: req.body.email,
     phone: req.body.phone
   };
   
@@ -34,7 +34,6 @@ exports.admin = function(req, res){
     if(err){ 
       //handle errors!
     }
-console.log(docs);
     res.render('admin', { response: docs });
   });
 };
