@@ -19,8 +19,7 @@
   .form-title
     h4 Preencha o formulário com as características do seu plano e dados para contato
     h4 Aguarde que um de nossos consultores entrará em contato
-  
-  //- form#form-plan.form-horizontal(method="POST", action="/plan")
+
   form#form-plan.form-horizontal
     .container-form
       .control-group
@@ -35,17 +34,17 @@
       .control-group
         label.control-label(for='inputNome') Nome
         .controls
-          input#inputNome(type='text', placeholder='Nome completo')
+          input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="[A-Za-z]+", required)
 
       .control-group
         label.control-label(for='inputEmail') Email
         .controls
-          input#inputEmail(type='email', placeholder='Email para contato')
+          input#inputEmail(type='email', placeholder='Email para contato', maxlength="50")
 
       .control-group
         label.control-label(for='inputTel') Telefone
         .controls
-          input#inputTel(type='text', placeholder='Telefone para contato')
+          input#inputTel(type='text', placeholder='Telefone para contato',maxlength="15", pattern="[0-9]+")
 
       .control-group
         label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
@@ -57,7 +56,7 @@
             ul.dropdown-menu
 
       .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
-        button#send.btn.btn-primary.btn-large(type='button') Contatar consultor
+        button#send.btn.btn-primary.btn-large(type='submit') Contatar consultor
 
 #congrats.modal.hide.fade
   .modal-header
