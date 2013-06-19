@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mapping routes
 app.get('/', controllers._);
+app.get('/admin', controllers.admin);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 

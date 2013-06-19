@@ -1,0 +1,25 @@
+!!! 5
+html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='//fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
+    meta(charset='utf-8')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+
+  body
+    table.table.table-bordered
+      thead
+        tr
+          th #
+          th Nome
+          th Email
+          th Telefone
+      tbody
+        - for(var i=0; i<response.length; i++)
+          tr
+            td #{i+1}
+            td #{response[i].name}
+            td #{response[i].email}
+            td #{response[i].phone}
+
+    

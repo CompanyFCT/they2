@@ -26,3 +26,15 @@ exports.plan = function(req, res){
     }
   });
 };
+
+
+exports.admin = function(req, res){
+  User.find(function(err,docs){
+    //docs.length==0 => handle
+    if(err){ 
+      //handle errors!
+    }
+console.log(docs);
+    res.render('admin', { response: docs });
+  });
+};
