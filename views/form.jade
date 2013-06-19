@@ -86,7 +86,6 @@ script
       dataType: "json",
       success: function(data){
         if(data.code==200){
-          $(document).scrollTop(0);
           $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
           $("#congrats").modal('show');
         }
