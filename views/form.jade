@@ -1,3 +1,20 @@
+.intro
+  secion
+    .container-fluid
+      .content-intro
+        header.why
+          h3 Encontre um plano de saúde que melhor se adapta ao seu bolso
+          ul.icons-ul
+            li.okay
+              i.icon-li.icon-ok
+              p Faça uma cotação online gratuitamente dos nossos planos de saúde
+              i.icon-li.icon-ok
+              p Cote de forma simples, rápida e prática
+              i.icon-li.icon-ok
+              p Encontre o plano de saúde mais adequado ao seu orçamento
+              i.icon-li.icon-ok
+              p Fale sem compromisso com um de nossos consultores
+
 .container.container-form-fluid
   form.form-horizontal
 
@@ -34,7 +51,11 @@
 
     .control-group
       .form-actions(style="border-top:0px;background-color:#fff;")
-        button.btn.btn-primary.btn-large(type='submit') Fazer cotação
+        .btn-toolbar
+          .btn-group
+            button.btn.btn-primary.btn-large(type='submit') Enviar
+          .btn-group
+            button.btn.btn-primary.btn-large.disabled(type='submit') Cotação Online
 
 //- script
 //-   $(function(){
