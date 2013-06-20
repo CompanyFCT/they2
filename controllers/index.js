@@ -12,7 +12,7 @@ exports._ = function(req, res){
 exports.plan = function(req, res){
   //validations
   var json = {
-    name: req.body.name, 
+    name: req.body.name.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase(), //fulltrim
     email: req.body.email,
     phone: req.body.phone
   };

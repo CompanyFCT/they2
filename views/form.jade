@@ -20,7 +20,7 @@
     h4 Preencha o formulário com as características do seu plano e dados para contato
     h4 Aguarde que um de nossos consultores entrará em contato
 
-  form#form-plan.form-horizontal
+  form#form-plan.form-horizontal(novalidate)
     .container-form
       .control-group
         label.control-label(for='inputCot') Tipo cotação
@@ -33,22 +33,22 @@
 
       .control-group
         label.control-label(for='inputNome') Nome
-        .controls
-          input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="[A-Za-z]+", required)
+        .controls.input-validation
+          input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
 
       .control-group
         label.control-label(for='inputEmail') Email
-        .controls
-          input#inputEmail(type='email', placeholder='Email para contato', maxlength="50")
+        .controls.input-validation
+          input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
 
       .control-group
         label.control-label(for='inputTel') Telefone
-        .controls
-          input#inputTel(type='text', placeholder='Telefone para contato',maxlength="15", pattern="[0-9]+")
+        .controls.input-validation
+          input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
 
       .control-group
         label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
-        .controls
+        .controls.input-validation
           .btn-group(style="float:left;")
             .btn.disabled São Paulo
             .btn.dropdown-toggle.disabled(data-toggle="dropdown")
@@ -66,37 +66,9 @@
   .modal-footer
     a#closeModal.btn.btn-primary="Fechar"
 
+//- replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
+
 script
-  $("#send").on('click', function(){
-    var name=$("#inputNome").val().toUpperCase();
-    var mail=$("#inputEmail").val();
-    var phone=$("#inputTel").val();
-
-    //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
-    $.ajax({
-      type: "post",
-      url: "/plan",
-      data: JSON.stringify({
-        name: name,
-        email: mail,
-        phone: phone
-      }),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function(data){
-        if(data.code==200){
-          $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
-          $("#congrats").modal('show');
-        }
-      },
-      failure: function(errMsg) {
-        console.log(errMsg);
-      }
-    });
-
-    return false;
-  });
-
   $("#online").on('click', function(){
     return false;
   });
@@ -112,3 +84,44 @@ script
     $("#inputEmail").val("");
     $("#inputTel").val("");
   });
+
+  $(function() {
+      $("input").jqBootstrapValidation(
+        {
+          preventSubmit: true,
+          submitError: function($form, event, errors) {
+              // Here I do nothing, but you could do something like display 
+              // the error messages to the user, log, etc.
+          },
+          submitSuccess: function($form, event) {
+            var name=$("#inputNome").val().replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase();
+            var mail=$("#inputEmail").val();
+            var phone=$("#inputTel").val();
+
+            //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
+            $.ajax({
+              type: "post",
+              url: "/plan",
+              data: JSON.stringify({
+                name: name,
+                email: mail,
+                phone: phone
+              }),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+                if(data.code==200){
+                  $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
+                  $("#congrats").modal('show');
+                }
+              },
+              failure: function(errMsg) {
+                console.log(errMsg);
+              }
+            });
+
+            event.preventDefault();
+          },
+        }
+      );
+    });

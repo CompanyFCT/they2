@@ -6352,3 +6352,6 @@ body div#wrap .input-age :-ms-input-placeholder {
 body div#wrap form#form-plan {
   text-align: center;
 }
+body div#wrap .input-validation {
+  text-align: left;
+}
