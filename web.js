@@ -10,8 +10,7 @@ var express = require('express')
   , locals = require('./base/locals').setLocals
   , path = require('path')
   , less = require('less-middleware')
-
-var app = express();
+  , app = express();
 
 
 // all environments
