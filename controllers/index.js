@@ -4,6 +4,18 @@
  */
 
 var User = require('../models/user.js');
+var redis=null;
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+  redis = require("redis").createClient(rtg.port, rtg.hostname);
+  redis.auth(rtg.auth.split(":")[1]); 
+} else {
+  redis = require("redis").createClient();
+}
+
+
+// redis = require("redis").createClient(6379,"127.0.0.1");
 
 // var username='xtchamps';
 // var pass='morloke!@1513#';
@@ -11,6 +23,12 @@ var User = require('../models/user.js');
 exports._ = function(req, res){
   res.render('index');
 };
+
+// logged = function() {
+//     redis.get("logged", function (err, res) {
+//       return res;
+//     });
+// }
 
 exports.plan = function(req, res){
   // validations
@@ -31,18 +49,20 @@ exports.plan = function(req, res){
 };
 
 exports.admin = function(req, res){
-  if(req.session.logged){
-    users(function(docs){
-      res.render('admin/index', { response: docs, logged: true });
-    });
-  }else{
-    res.render('admin/index');
-  }
+  redis.get("logged", function (err, val) {
+    if(val==null){
+      res.render('admin/index');
+    }else{
+      users(function(docs){
+        res.render('admin/index', { response: docs, logged: true });
+      });
+    }
+  });
 };
 
 exports.login = function(req, res){
   if(req.body.user=='admin' && req.body.pass=='123456'){
-    req.session.logged=true;
+    redis.set("logged", true);
     res.send({});
   }else{
     res.send({status:404});
@@ -50,10 +70,7 @@ exports.login = function(req, res){
 };
 
 exports.logout = function(req, res){
-  if(req.session.logged){
-    delete req.session.logged;
-  }
-
+  redis.del("logged");
   res.redirect('/admin');
 };
 

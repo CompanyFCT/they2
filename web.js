@@ -24,8 +24,8 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 
-app.use(express.cookieParser('12345678'));
-app.use(express.session({ secret: '123456' }));
+// app.use(express.cookieParser('12345678'));
+// app.use(express.session({ secret: '123456' }));
 
 app.use(express.methodOverride());
 app.use(locals);
