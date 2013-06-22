@@ -33,7 +33,7 @@ exports.plan = function(req, res){
 exports.admin = function(req, res){
   if(req.session.logged){
     users(function(docs){
-      res.render('admin', { response: docs });
+      res.render('admin', { response: docs, logged: true });
     });
   }else{
     res.render('admin');
