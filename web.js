@@ -33,13 +33,13 @@ app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// var auth = express.basicAuth(function(user, pass, callback) {
-//  var result = (user === 'admin' && pass === '123456');
-//  callback(null /* error */, result);
-// });
-
-
+// function checkAuth(req, res, next) {
+//   if (!req.session.logged) {
+//     res.send({status:404});
+//   } else {
+//     next();
+//   }
+// }
 
 //mapping routes
 app.get('/', controllers._);
