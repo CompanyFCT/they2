@@ -1,25 +1,62 @@
 !!! 5
 html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
   head
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/admin.css')
     link(href='//fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
     meta(charset='utf-8')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
 
   body
-    table.table.table-bordered
-      thead
-        tr
-          th #
-          th Nome
-          th Email
-          th Telefone
-      tbody
-        - for(var i=0; i<response.length; i++)
+    - if (typeof(logged)!="undefined" && logged)
+      table.table.table-bordered
+        thead
           tr
-            td #{i+1}
-            td #{response[i].name}
-            td #{response[i].email}
-            td #{response[i].phone}
+            th #
+            th Nome
+            th Email
+            th Telefone
+        tbody
+          - for(var i=0; i<response.length; i++)
+            tr
+              td #{i+1}
+              td #{response[i].name}
+              td #{response[i].email}
+              td #{response[i].phone}
 
-    
+    - else
+      #login.modal.show
+        .modal-header
+          h4 Login
+        .modal-body
+          form.form-horizontal(action="login", method="POST")
+            .container-form
+              .control-group(style="text-align:center;")
+                input#user(type='text', placeholder='usuário',name="user")
+
+              .control-group(style="text-align:center;")
+                input#pass(type='password', placeholder='senha',,name="pass")
+
+              .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;text-align:center;")
+                input.btn.btn-primary.btn-large(type='submit') Login
+        #modalFooter.modal-footer.hide
+
+      script
+        $("form").submit(function(e) {
+          e.preventDefault(); // Prevents the page from refreshing
+          var $this = $(this); // `this` refers to the current form element
+          $.post(
+              $this.attr("action"), // Gets the URL to sent the post to
+              $this.serialize(), // Serializes form data in standard format
+              function(data) {
+                if(data.status==404){
+                  $("p#error").remove();
+                  $("#modalFooter").removeClass("hide");
+                  $("#modalFooter").append('<p id="error">Usuário ou senha inválidos</p>');
+                  $("p#error").addClass('login-wrong');
+                }else{
+                  window.location.reload();
+                }
+              },
+              "json" // The format the response should be in
+          );
+        });

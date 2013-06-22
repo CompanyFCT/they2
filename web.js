@@ -14,7 +14,6 @@ var express = require('express')
 var app = express();
 
 
-
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -24,15 +23,28 @@ app.set('facebook', {name: 'Plano de Vidas', app_id: '500765623322565', app_secr
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
+
+app.use(express.cookieParser('12345678'));
+app.use(express.session({ secret: '123456' }));
+
 app.use(express.methodOverride());
 app.use(locals);
 app.use(app.router);  
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// var auth = express.basicAuth(function(user, pass, callback) {
+//  var result = (user === 'admin' && pass === '123456');
+//  callback(null /* error */, result);
+// });
+
+
+
 //mapping routes
 app.get('/', controllers._);
 app.get('/admin', controllers.admin);
+app.post('/login', controllers.login);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 
