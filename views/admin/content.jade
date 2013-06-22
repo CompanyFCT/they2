@@ -1,0 +1,31 @@
+.container-fluid
+  .row-fluid
+    .span2
+      .nav.nav-list
+        li.divider
+        li.active
+          a(href="#") Todos
+        li
+          a(href="#") Aprovados
+        li
+          a(href="#") Pendentes
+        li.divider
+        li
+          a(href="/logout") Sair
+
+    .span10
+      table.table.table-bordered
+        thead
+          tr
+            th #
+            th Nome
+            th Email
+            th Telefone
+        tbody
+          - for(var i=0; i<response.length; i++)
+            tr
+              td #{i+1}
+              td #{response[i].name}
+              td #{response[i].email}
+              td #{response[i].phone}
+

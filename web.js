@@ -44,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //mapping routes
 app.get('/', controllers._);
 app.get('/admin', controllers.admin);
+app.get('/logout', controllers.logout);
+
 app.post('/login', controllers.login);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);

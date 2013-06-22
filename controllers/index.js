@@ -33,10 +33,10 @@ exports.plan = function(req, res){
 exports.admin = function(req, res){
   if(req.session.logged){
     users(function(docs){
-      res.render('admin', { response: docs, logged: true });
+      res.render('admin/index', { response: docs, logged: true });
     });
   }else{
-    res.render('admin');
+    res.render('admin/index');
   }
 };
 
@@ -47,6 +47,14 @@ exports.login = function(req, res){
   }else{
     res.send({status:404});
   }
+};
+
+exports.logout = function(req, res){
+  if(req.session.logged){
+    delete req.session.logged;
+  }
+
+  res.redirect('/admin');
 };
 
 //used like callback to retrieve user data
