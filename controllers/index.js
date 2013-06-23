@@ -4,6 +4,7 @@
  */
 
 var User = require('../models/user.js');
+var nuuid = require('node-uuid');
 var redis=null;
 
 if (process.env.REDISTOGO_URL) {
@@ -14,21 +15,12 @@ if (process.env.REDISTOGO_URL) {
   redis = require("redis").createClient();
 }
 
-
-// redis = require("redis").createClient(6379,"127.0.0.1");
-
 // var username='xtchamps';
 // var pass='morloke!@1513#';
 
 exports._ = function(req, res){
   res.render('index');
 };
-
-// logged = function() {
-//     redis.get("logged", function (err, res) {
-//       return res;
-//     });
-// }
 
 exports.plan = function(req, res){
   // validations
@@ -49,20 +41,24 @@ exports.plan = function(req, res){
 };
 
 exports.admin = function(req, res){
-  redis.get("logged", function (err, val) {
-    if(val==null){
-      res.render('admin/index');
-    }else{
+  redis.get("admin", function (err, val) {
+    if(val==req.signedCookies.admin && req.signedCookies.admin){
+      console.log(req.session);
       users(function(docs){
         res.render('admin/index', { response: docs, logged: true });
       });
+    }else{
+      res.render('admin/index');
     }
   });
 };
 
 exports.login = function(req, res){
   if(req.body.user=='admin' && req.body.pass=='123456'){
-    redis.set("logged", true);
+    var _uuid=nuuid.v1();
+    res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find other way! ;)
+    redis.setex("admin", 600, _uuid);//10min
+
     res.send({});
   }else{
     res.send({status:404});
@@ -70,7 +66,7 @@ exports.login = function(req, res){
 };
 
 exports.logout = function(req, res){
-  redis.del("logged");
+  redis.del("admin");
   res.redirect('/admin');
 };
 
