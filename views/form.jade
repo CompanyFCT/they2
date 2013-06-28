@@ -19,57 +19,41 @@ header
                     p Fale sem compromisso com um de nossos consultores
               .span6
                 .row-fluid
-                  a.btn.btn-primary.btn-large Simulação Online
+                  a#online.btn.btn-primary.btn-large Simulação Online
                 .row-fluid
-                  a.btn.btn-primary.btn-large(style="margin-top:10px;") Prefiro falar com corretor
+                  a#consultant.btn.btn-primary.btn-large(style="margin-top:10px;") Prefiro falar com corretor
 
 .container-outer
-  //- .container-form-fluid
   .row-fluid
-    .span4
-      //- .form-title
-      //-   h4 Preencha o formulário com as características do seu plano e dados para contato
-      //-   h4 Aguarde que um de nossos consultores entrará em contato
-
+    #consultant-form.span4.hide
       form#form-plan.form-horizontal(novalidate)
-        //- //- .container-form
+        .control-group
+          .controls.input-validation
+            input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
+
+        .control-group
+          .controls.input-validation
+            input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
+
+        .control-group
+          .controls.input-validation
+            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+
         //- .control-group
-        //-   //- label.control-label(for='inputCot') Tipo cotação
-        //-   .controls
+        //-   .controls.input-validation
         //-     .btn-group(style="float:left;")
-        //-       .btn.disabled Consultor
+        //-       .btn.disabled São Paulo
         //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
         //-         span.caret
         //-       ul.dropdown-menu
 
         .control-group
-          //- label.control-label(for='inputNome') Nome
-          .controls.input-validation
-            input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
-
+          .controls
+            p Ou ligue 11-987024849
+            
         .control-group
-          //- label.control-label(for='inputEmail') Email
-          .controls.input-validation
-            input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
-
-        .control-group
-          //- label.control-label(for='inputTel') Telefone
-          .controls.input-validation
-            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
-
-        .control-group
-          //- label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
-          .controls.input-validation
-            .btn-group(style="float:left;")
-              .btn.disabled São Paulo
-              .btn.dropdown-toggle.disabled(data-toggle="dropdown")
-                span.caret
-              ul.dropdown-menu
-
-    //- //- .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
-    //- .form-actions(style="border-top:0px;padding-left:0;background:rgba(0,0,0,0);")
-  .row-fluid.span12(style="text-align:center;")
-    button#send.btn.btn-primary.btn-large(type='submit') Avançar
+          .controls
+            button#send.btn.btn-primary.btn-large(type='submit') Enviar contato
 
 #congrats.modal.hide.fade
   .modal-header
@@ -82,6 +66,11 @@ header
 //- replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
 
 script
+  $("a#consultant").on('click', function(){
+    $("#consultant-form").removeClass("hide");
+    return false;
+  });
+
   $("#online").on('click', function(){
     return false;
   });
@@ -96,6 +85,7 @@ script
     $("#inputNome").val("");
     $("#inputEmail").val("");
     $("#inputTel").val("");
+    $("#consultant-form").addClass("hide");
   });
 
   $(function() {
