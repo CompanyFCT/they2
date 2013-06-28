@@ -1,15 +1,22 @@
 @import "twitter-bootstrap/bootstrap";
 
-body{
+html, body, div#container{
+   min-height: 100%;
+   height: 100%;
+}
+
+html, body{
   font-family: 'Droid Sans', Arial, sans-serif;
   background-image: url('../images/team.jpg');
+  min-height: 100%;
+  height: 100%;
 
   div#wrap{
+    min-height: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.8);
 
     @import "header";
     @import "form";
   }
 }
-
-

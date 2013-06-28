@@ -5,60 +5,71 @@ header
         .content-intro
           header.why
             h3 Encontre um plano de saúde que melhor combina com seu bolso
-            ul.icons-ul
-              li.okay
-                i.icon-li.icon-ok
-                p Cotação online e gratuita
-                i.icon-li.icon-ok
-                p Cote de forma simples, rápida e prática
-                i.icon-li.icon-ok
-                p Encontre o plano de saúde mais adequado ao seu orçamento
-                i.icon-li.icon-ok
-                p Fale sem compromisso com um de nossos consultores
+            .row-fluid
+              .span6
+                ul.icons-ul
+                  li.okay
+                    i.icon-li.icon-ok
+                    p Cotação online e gratuita
+                    i.icon-li.icon-ok
+                    p Cote de forma simples, rápida e prática
+                    i.icon-li.icon-ok
+                    p Encontre o plano de saúde mais adequado ao seu orçamento
+                    i.icon-li.icon-ok
+                    p Fale sem compromisso com um de nossos consultores
+              .span6
+                .row-fluid
+                  a.btn.btn-primary.btn-large Simulação Online
+                .row-fluid
+                  a.btn.btn-primary.btn-large(style="margin-top:10px;") Prefiro falar com corretor
 
-.container.container-form-fluid
-  .form-title
-    h4 Preencha o formulário com as características do seu plano e dados para contato
-    h4 Aguarde que um de nossos consultores entrará em contato
+.container-outer
+  //- .container-form-fluid
+  .row-fluid
+    .span4
+      //- .form-title
+      //-   h4 Preencha o formulário com as características do seu plano e dados para contato
+      //-   h4 Aguarde que um de nossos consultores entrará em contato
 
-  form#form-plan.form-horizontal(novalidate)
-    .container-form
-      .control-group
-        //- label.control-label(for='inputCot') Tipo cotação
-        .controls
-          .btn-group(style="float:left;")
-            .btn.disabled Consultor
-            .btn.dropdown-toggle.disabled(data-toggle="dropdown")
-              span.caret
-            ul.dropdown-menu
+      form#form-plan.form-horizontal(novalidate)
+        //- //- .container-form
+        //- .control-group
+        //-   //- label.control-label(for='inputCot') Tipo cotação
+        //-   .controls
+        //-     .btn-group(style="float:left;")
+        //-       .btn.disabled Consultor
+        //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
+        //-         span.caret
+        //-       ul.dropdown-menu
 
-      .control-group
-        //- label.control-label(for='inputNome') Nome
-        .controls.input-validation
-          input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
+        .control-group
+          //- label.control-label(for='inputNome') Nome
+          .controls.input-validation
+            input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
 
-      .control-group
-        //- label.control-label(for='inputEmail') Email
-        .controls.input-validation
-          input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
+        .control-group
+          //- label.control-label(for='inputEmail') Email
+          .controls.input-validation
+            input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
 
-      .control-group
-        //- label.control-label(for='inputTel') Telefone
-        .controls.input-validation
-          input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+        .control-group
+          //- label.control-label(for='inputTel') Telefone
+          .controls.input-validation
+            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
 
-      .control-group
-        //- label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
-        .controls.input-validation
-          .btn-group(style="float:left;")
-            .btn.disabled São Paulo
-            .btn.dropdown-toggle.disabled(data-toggle="dropdown")
-              span.caret
-            ul.dropdown-menu
+        .control-group
+          //- label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
+          .controls.input-validation
+            .btn-group(style="float:left;")
+              .btn.disabled São Paulo
+              .btn.dropdown-toggle.disabled(data-toggle="dropdown")
+                span.caret
+              ul.dropdown-menu
 
-      //- .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
-      .form-actions(style="border-top:0px;padding-left:0;background:rgba(0,0,0,0);")
-        button#send.btn.btn-primary.btn-large(type='submit') Contatar consultor
+    //- //- .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
+    //- .form-actions(style="border-top:0px;padding-left:0;background:rgba(0,0,0,0);")
+  .row-fluid.span12(style="text-align:center;")
+    button#send.btn.btn-primary.btn-large(type='submit') Avançar
 
 #congrats.modal.hide.fade
   .modal-header

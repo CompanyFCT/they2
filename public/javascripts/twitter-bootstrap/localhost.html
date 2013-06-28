@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script id="facebook-jssdk" src="./localhost_files/all.js"></script><script async="" src="./localhost_files/analytics.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-41730552-1', 'herokuapp.com');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css"><link href="./localhost_files/css" rel="stylesheet" type="text/css"><meta charset="utf-8"><meta property="og:title" content="Plano de Vidas"><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:3000"><meta property="og:image" content="http://localhost:3000/logo.png"><meta property="og:site_name" content="Plano de Vidas"><meta property="og:description" content="Seu plano de saúde no facebook"><meta property="fb:app_id" content="500765623322565"><script src="./localhost_files/jquery.min.js"></script><script src="./localhost_files/bootstrap.js"></script><script src="./localhost_files/jqBootstrapValidation.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://m-static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style></head><body><div id="fb-root" class=" fb_reset"><script>window.fbAsyncInit = function() {
+FB.init({
+appId      : '500765623322565', // App ID
+channelUrl : '://localhost:3000/channel.html', // Channel File
+status     : true, // check login status
+cookie     : true, // enable cookies to allow the server to access the session
+xfbml      : true // parse XFBML
+});
+// Listen to the auth.login which will be called when the user logs in
+// using the Login button
+FB.Event.subscribe('auth.login', function(response) {
+// We want to reload the page now so PHP can read the cookie that the
+// Javascript SDK sat. But we don't want to use
+// window.location.reload() because if this is in a canvas there was a
+// post made to this page and a reload will trigger a message to the
+// user asking if they want to send data again.
+window.location = window.location;
+});
+FB.Canvas.setAutoGrow();
+};
+// Load the SDK Asynchronously
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=500765623322565";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" style="border: none;" src="./localhost_files/xd_arbiter.html"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" style="border: none;" src="./localhost_files/xd_arbiter(1).html"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="f3e43448e4" frameborder="0" allowtransparency="true" scrolling="no" style="display: none;" src="./localhost_files/ping.html"></iframe></div></div></div><div id="wrap"><header id="top" class="navbar navbar-fixed-top"><div class="container-fluid"><div data-href="http://arcane-shore-5241.herokuapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" class="fb fb-like fb_edge_widget_with_comment fb_iframe_widget" fb-xfbml-state="rendered"><span style="height: 20px; width: 152px;"><iframe id="f3236f818" name="f28134d04c" scrolling="no" style="border: none; overflow: hidden; height: 20px; width: 152px;" title="Like this content on Facebook." class="fb_ltr" src="./localhost_files/like.html"></iframe></span></div></div></header><header><div class="intro"><secion><div class="container-fluid"><div class="content-intro"><header class="why"><h3>Encontre um plano de saúde que melhor combina com seu bolso</h3><ul class="icons-ul"><li class="okay"><i class="icon-li icon-ok"></i><p>Cotação online e gratuita</p><i class="icon-li icon-ok"></i><p>Cote de forma simples, rápida e prática</p><i class="icon-li icon-ok"></i><p>Encontre o plano de saúde mais adequado ao seu orçamento</p><i class="icon-li icon-ok"></i><p>Fale sem compromisso com um de nossos consultores</p></li></ul></header></div></div></secion></div></header><div class="container container-form-fluid"><form id="form-plan" novalidate="" class="form-horizontal"><div class="container-form"><div class="control-group"><div class="controls"><div style="float:left;" class="btn-group"><div class="btn disabled">Consultor</div><div data-toggle="dropdown" class="btn dropdown-toggle disabled"><span class="caret"></span></div><ul class="dropdown-menu"></ul></div></div></div><div class="control-group"><div class="controls input-validation"><input id="inputNome" type="text" placeholder="Nome completo" maxlength="50" pattern="\s*[A-Za-z]+[A-Za-z\s]*" required="" data-validation-required-message="Obrigatório" data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)"><div class="help-block"></div></div></div><div class="control-group"><div class="controls input-validation"><input id="inputEmail" type="email" placeholder="Email para contato" maxlength="50" pattern=".{5,50}" required="" data-validation-required-message="Obrigatório" data-validation-validemail-message="Email no formato inválido" data-validation-pattern-message="Mínimo 5 caracteres"><div class="help-block"></div></div></div><div class="control-group"><div class="controls input-validation"><input id="inputTel" type="text" placeholder="Telefone para contato" maxlength="15" pattern="[0-9]{5,15}" data-validation-required-message="Obrigatório" data-validation-pattern-message="Mínimo 5 números"><div class="help-block"></div></div></div><div class="control-group"><div class="controls input-validation"><div style="float:left;" class="btn-group"><div class="btn disabled">São Paulo</div><div data-toggle="dropdown" class="btn dropdown-toggle disabled"><span class="caret"></span></div><ul class="dropdown-menu"></ul></div></div></div><div style="border-top:0px;padding-left:0;background:rgba(0,0,0,0);" class="form-actions"><button id="send" type="submit" class="btn btn-primary btn-large">Contatar consultor</button></div></div></form></div><div id="congrats" class="modal hide fade"><div class="modal-header"><h4 id="thanks"> </h4></div><div class="modal-body"><h3>Em breve um de nossos consultores entrará em contato</h3></div><div class="modal-footer"><a id="closeModal" class="btn btn-primary">Fechar</a></div></div><script>$("#online").on('click', function(){
+  return false;
+});
+
+$("#closeModal").on('click', function(){
+  $("#congrats").modal('hide');
+});
+
+$("#congrats").on('hide', function(){
+  //resolve this. better way to solve it
+  $("#thanks").text("");
+  $("#inputNome").val("");
+  $("#inputEmail").val("");
+  $("#inputTel").val("");
+});
+
+$(function() {
+    $("input").jqBootstrapValidation(
+      {
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // Here I do nothing, but you could do something like display 
+            // the error messages to the user, log, etc.
+        },
+        submitSuccess: function($form, event) {
+          var name=$("#inputNome").val().replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase();
+          var mail=$("#inputEmail").val();
+          var phone=$("#inputTel").val();
+          
+          //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
+          $.ajax({
+            type: "post",
+            url: "/plan",
+            data: JSON.stringify({
+              name: name,
+              email: mail,
+              phone: phone
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+              if(data.code==200){
+                $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
+                $("#congrats").modal('show');
+              }
+            },
+            failure: function(errMsg) {
+              console.log(errMsg);
+            }
+          });
+          
+          event.preventDefault();
+        },
+      }
+    );
+});</script></div></body></html>
