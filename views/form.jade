@@ -4,7 +4,7 @@ header
       .container-fluid
         .content-intro
           header.why
-            h3 Encontre um plano de saúde que melhor se combina ao seu bolso
+            h3 Encontre um plano de saúde que melhor combina com seu bolso
             ul.icons-ul
               li.okay
                 i.icon-li.icon-ok
@@ -16,7 +16,7 @@ header
                 i.icon-li.icon-ok
                 p Fale sem compromisso com um de nossos consultores
 
-.container.container-form-fluid(style="background:rgba(1,1,1,0.1)")
+.container.container-form-fluid
   .form-title
     h4 Preencha o formulário com as características do seu plano e dados para contato
     h4 Aguarde que um de nossos consultores entrará em contato
@@ -24,7 +24,7 @@ header
   form#form-plan.form-horizontal(novalidate)
     .container-form
       .control-group
-        label.control-label(for='inputCot') Tipo cotação
+        //- label.control-label(for='inputCot') Tipo cotação
         .controls
           .btn-group(style="float:left;")
             .btn.disabled Consultor
@@ -33,22 +33,22 @@ header
             ul.dropdown-menu
 
       .control-group
-        label.control-label(for='inputNome') Nome
+        //- label.control-label(for='inputNome') Nome
         .controls.input-validation
           input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
 
       .control-group
-        label.control-label(for='inputEmail') Email
+        //- label.control-label(for='inputEmail') Email
         .controls.input-validation
           input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
 
       .control-group
-        label.control-label(for='inputTel') Telefone
+        //- label.control-label(for='inputTel') Telefone
         .controls.input-validation
           input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
 
       .control-group
-        label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
+        //- label.control-label(for='inputLocal') Localidade (Em breve demais regiões)
         .controls.input-validation
           .btn-group(style="float:left;")
             .btn.disabled São Paulo
@@ -56,7 +56,8 @@ header
               span.caret
             ul.dropdown-menu
 
-      .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
+      //- .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;")
+      .form-actions(style="border-top:0px;padding-left:0;background:rgba(0,0,0,0);")
         button#send.btn.btn-primary.btn-large(type='submit') Contatar consultor
 
 #congrats.modal.hide.fade
