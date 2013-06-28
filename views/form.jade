@@ -67,11 +67,14 @@ header
 
 script
   $("a#consultant").on('click', function(){
+    resetFields();
     $("#consultant-form").removeClass("hide");
     return false;
   });
 
   $("#online").on('click', function(){
+    resetFields();
+    $("#online-form").removeClass("hide");
     return false;
   });
 
@@ -81,12 +84,17 @@ script
 
   $("#congrats").on('hide', function(){
     //resolve this. better way to solve it
+    resetFields();
+  });
+
+  function resetFields(){
     $("#thanks").text("");
     $("#inputNome").val("");
     $("#inputEmail").val("");
     $("#inputTel").val("");
     $("#consultant-form").addClass("hide");
-  });
+    //- $("#online-form").addClass("hide");
+  }
 
   $(function() {
       $("input").jqBootstrapValidation(
