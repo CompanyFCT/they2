@@ -37,7 +37,7 @@ header
 
         .control-group
           .controls.input-validation
-            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números", required)
 
         //- .control-group
         //-   .controls.input-validation
@@ -62,8 +62,6 @@ header
     h3 Em breve um de nossos consultores entrará em contato
   .modal-footer
     a#closeModal.btn.btn-primary="Fechar"
-
-//- replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
 
 script
   $("a#consultant").on('click', function(){
