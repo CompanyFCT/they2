@@ -16,52 +16,54 @@ header
                     i.icon-li.icon-ok
                     p Encontre o plano de saúde mais adequado ao seu orçamento
                     i.icon-li.icon-ok
-                    p Fale sem compromisso com um de nossos consultores
-              .span6
-                .row-fluid
-                  a#online.btn.btn-primary.btn-large Simulação Online
-                .row-fluid
-                  a#consultant.btn.btn-primary.btn-large(style="margin-top:10px;") Prefiro falar com corretor
+                    //- p Fale sem compromisso com um de nossos consultores
+                    p Faça uma cotação em 3 passos
+              //- .span6
+              //-   .row-fluid
+              //-     a#online.btn.btn-primary.btn-large Simulação Online
+              //-   .row-fluid
+              //-     a#consultant.btn.btn-primary.btn-large(style="margin-top:10px;") Prefiro falar com corretor
 
 .container-outer
   .row-fluid
-    #consultant-form.span4.hide
-      form#form-plan.form-horizontal(novalidate)
-        .control-group
-          .controls.input-validation
-            input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
+    #consultant-form
+      .span4
+        form#form-plan.form-horizontal(novalidate)
+          .control-group
+            .controls.input-validation
+              input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
 
-        .control-group
-          .controls.input-validation
-            input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
+          .control-group
+            .controls.input-validation
+              input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
 
-        .control-group
-          .controls.input-validation
-            input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números", required)
+          .control-group
+            .controls.input-validation
+              input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números", required)
 
-        //- .control-group
-        //-   .controls.input-validation
-        //-     .btn-group(style="float:left;")
-        //-       .btn.disabled São Paulo
-        //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
-        //-         span.caret
-        //-       ul.dropdown-menu
+          //- .control-group
+          //-   .controls.input-validation
+          //-     .btn-group(style="float:left;")
+          //-       .btn.disabled São Paulo
+          //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
+          //-         span.caret
+          //-       ul.dropdown-menu
 
-        .control-group
-          .controls
-            p Ou ligue 11-987024849
-            
-        .control-group
-          .controls
-            button#send.btn.btn-primary.btn-large(type='submit') Enviar contato
+          .control-group
+            .controls
+              p Ou ligue 11-987024849
+              
+          .control-group
+            .controls
+              button#send.btn.btn-primary.btn-large(type='submit') Meus Dados
 
-#congrats.modal.hide.fade
-  .modal-header
-    h4#thanks 
-  .modal-body
-    h3 Em breve um de nossos consultores entrará em contato
-  .modal-footer
-    a#closeModal.btn.btn-primary="Fechar"
+//- #congrats.modal.hide.fade
+//-   .modal-header
+//-     h4#thanks 
+//-   .modal-body
+//-     h3 Em breve um de nossos consultores entrará em contato
+//-   .modal-footer
+//-     a#closeModal.btn.btn-primary="Fechar"
 
 script
   $("a#consultant").on('click', function(){
