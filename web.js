@@ -19,7 +19,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view options', {});
 app.set('view engine', 'jade');
-app.set('facebook', {name: 'Plano de Vidas', app_id: '500765623322565', app_secret_id: 'fbe98a513d0d37ca4e217747acbef965'});
+app.set('facebook', {name: 'Plano de Vidas', app_id: '695841343765448', app_secret_id: '9c68237c30a7dbcf234a6055c55d5c86'});
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
