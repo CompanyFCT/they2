@@ -3,6 +3,9 @@
  * GET home page.
  */
 
+var fs = require('fs');
+// var path = require('path')
+
 var User = require('../models/user.js');
 var nuuid = require('node-uuid');
 var redis=null;
@@ -19,6 +22,8 @@ if (process.env.REDISTOGO_URL) {
 // var pass='morloke!@1513#';
 
 exports._ = function(req, res){
+  // console.log(global.public_folder);
+  console.log(fs.readdirSync(global.public_folder + '/images/logos'));
   res.render('index');
 };
 

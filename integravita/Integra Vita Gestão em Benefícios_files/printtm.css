@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    font: 8pt Calibri, Tahoma, Arial !important;
+	font-size: 8pt !important;
+}
+#calculo{
+	max-width: 830px !important;
+	margin: 0 auto !important;
+}
+#calculo *{
+    font: 8pt Calibri, Tahoma, Arial;
+	font-size: 8pt;
+}
+a{
+    color: #555753;
+    text-decoration: none;
+    cursor: pointer;
+}
+body {
+    margin: 0 auto;
+    width: 100% !important
+    overflow-y: scroll;
+}
+
+.modal{
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.menu{
+    display: none !important;
+}
+
+.quebra_pagina{
+    page-break-before: always;
+}
+
+/* Espreme as celulas */
+td{
+	padding: 0 1px !important;
+}
+.centro {
+	text-align: center;
+}
+
+.linha_total,
+tr.linha_total {
+	font-weight: bold !important;
+	color: black !important;	
+	border: 1px solid #0C4678 !important;
+	background: #FCFCCC !important;
+}
+
+/** HIDDEN */
+/*br{display: none;}*/
+.celula_locais br{
+	display: block;
+}
+
+#top,
+.jrMenu,
+.central ._cT,
+.central ._cM .opcoes,
+.central ._cB,
+.rodape,
+.noprint {
+    display: none;
+}

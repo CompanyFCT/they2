@@ -29,33 +29,33 @@ header
     #consultant-form
       .span4
         form#form-plan.form-horizontal(novalidate)
-          .control-group
-            .controls.input-validation
-              input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
-
-          .control-group
-            .controls.input-validation
-              input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
-
-          .control-group
-            .controls.input-validation
-              input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números", required)
+          //- .control-group
+          //-   .controls.input-validation
+          //-     input#inputNome(type='text', placeholder='Nome completo', maxlength="50", pattern="\\s*[A-Za-z]+[A-Za-z\\s]*", required, data-validation-required-message="Obrigatório", data-validation-pattern-message="Apenas letras (mínimo 5 caracteres)")
 
           //- .control-group
           //-   .controls.input-validation
-          //-     .btn-group(style="float:left;")
-          //-       .btn.disabled São Paulo
-          //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
-          //-         span.caret
-          //-       ul.dropdown-menu
+          //-     input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
 
-          .control-group
-            .controls
-              p Ou ligue 11-987024849
+          //- .control-group
+          //-   .controls.input-validation
+          //-     input#inputTel(type='text', placeholder='Telefone para contato', maxlength="15", pattern="[0-9]{5,15}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números", required)
+
+          //- //- .control-group
+          //- //-   .controls.input-validation
+          //- //-     .btn-group(style="float:left;")
+          //- //-       .btn.disabled São Paulo
+          //- //-       .btn.dropdown-toggle.disabled(data-toggle="dropdown")
+          //- //-         span.caret
+          //- //-       ul.dropdown-menu
+
+          //- .control-group
+          //-   .controls
+          //-     p Ou ligue 11-987024849
               
-          .control-group
-            .controls
-              button#send.btn.btn-primary.btn-large(type='submit') Próximo
+          //- .control-group
+          //-   .controls
+          //-     button#send.btn.btn-primary.btn-large(type='submit') Próximo
 
 //- #congrats.modal.hide.fade
 //-   .modal-header
