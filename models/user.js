@@ -8,13 +8,14 @@ var schema = new mongoose.Schema({
   when: {type: Date, default: Date.now, required: true}
 });
 
-//get all
-//schema.methods.all = function(cb){
-//  return User.find(function(err,docs){ /* docs.length==0 => handle */
-//    if(err){ /* handle errors! */ }
-//    cb(docs);
-//  });
-//w}
+// Get all users
+schema.statics.all = function(cb){
+ return this.find(function(err,docs){
+ 	 // docs.length==0 => handle 
+   if(err) {}// handle errors! 
+   else{cb(docs);} 
+ });
+}
 
 module.exports = mongoose.model('User', schema);
 

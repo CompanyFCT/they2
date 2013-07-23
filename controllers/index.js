@@ -1,9 +1,11 @@
+//FIXME => REDUNTANT REDIS
+//FIXME => REMOVE COOKIE
 
 /*
  * GET home page.
  */
 
-var fs = require('fs');
+// var fs = require('fs');
 // var path = require('path')
 
 var User = require('../models/user.js');
@@ -18,12 +20,9 @@ if (process.env.REDISTOGO_URL) {
   redis = require("redis").createClient();
 }
 
-// var username='xtchamps';
-// var pass='morloke!@1513#';
-
 exports._ = function(req, res){
   // console.log(global.public_folder);
-  console.log(fs.readdirSync(global.public_folder + '/images/logos'));
+  // console.log(fs.readdirSync(global.public_folder + '/images/logos'));
   res.render('index');
 };
 
@@ -48,8 +47,7 @@ exports.plan = function(req, res){
 exports.admin = function(req, res){
   redis.get("admin", function (err, val) {
     if(val==req.signedCookies.admin && req.signedCookies.admin){
-      console.log(req.session);
-      users(function(docs){
+      User.all(function(docs){
         res.render('admin/index', { response: docs, logged: true });
       });
     }else{
@@ -74,11 +72,3 @@ exports.logout = function(req, res){
   redis.del("admin");
   res.redirect('/admin');
 };
-
-//used like callback to retrieve user data
-function users(cb){
-  User.find(function(err,docs){ /* docs.length==0 => handle */
-    if(err){ /* handle errors! */ }
-    cb(docs);
-  });
-}
