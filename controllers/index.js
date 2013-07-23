@@ -31,17 +31,20 @@ exports.plan = function(req, res){
   var json = {
     name: req.body.name.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase(), //fulltrim
     email: req.body.email,
-    phone: req.body.phone
+    phones: req.body.phones,
+    type: req.body.type
   };
-  
+
   new User(json).save(function (errSave) {
     if (errSave){
-      console.log ('Error on save!' + errSave); 
+      console.log ('Error on save!' + errSave);
       res.send({code:500});
     }else{
       res.send({code:200});
     }
   });
+
+  res.send({code:200})
 };
 
 exports.admin = function(req, res){
@@ -72,6 +75,7 @@ exports.logout = function(req, res){
   redis.del("admin");
   res.redirect('/admin');
 };
+
 
 
 exports.plans = function(req, res){

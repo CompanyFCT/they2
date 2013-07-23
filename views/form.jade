@@ -16,9 +16,9 @@ header
                     i.icon-li.icon-ok
                     p Encontre o plano de saúde mais adequado ao seu orçamento
                     i.icon-li.icon-ok
-                    p Entre em contato com o consultor 11-987024849
+                    p Entre em contato com nossos consultores  11-987024849
               .span6
-                a.btn.btn-primary.btn-large(style="margin-top:5%", href="/plans") Planos & Valores
+                a.btn.btn-primary.btn-large(style="margin-top:5%", href="/plans") Veja nossos Planos & Valores
 
 .container-outer
   .row-fluid
@@ -36,19 +36,19 @@ header
 
           .control-group
             .controls.input-validation
-              input#inputEmail(type='email', placeholder='Email para contato', maxlength="50", pattern=".{5,50}", required, data-validation-required-message="Obrigatório", data-validation-validemail-message="Email no formato inválido", data-validation-pattern-message="Mínimo 5 caracteres")
+              input#inputEmail(type='email', placeholder='Email para contato', maxlength="50")
 
           .control-group
             .controls.input-validation
-              input#inputTel(type='text', placeholder='Telefone residencial', maxlength="15", pattern="[0-9]{8,12}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+              input#inputH(type='text', placeholder='Telefone residencial', maxlength="15")
 
           .control-group
             .controls.input-validation
-              input#inputTel(type='text', placeholder='Telefone comercial', maxlength="15", pattern="[0-9]{8,12}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+              input#inputCom(type='text', placeholder='Telefone comercial', maxlength="15")
 
           .control-group
             .controls.input-validation
-              input#inputTel(type='text', placeholder='Telefone celular', maxlength="15", pattern="[0-9]{8,12}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
+              input#inputCel(type='text', placeholder='Telefone celular', maxlength="15")
 
         .span5.offset2
           .control-group
@@ -62,7 +62,7 @@ header
                 a#type.btn.dropdown-toggle(data-toggle="dropdown") Individual
                   span.caret
                 ul.dropdown-menu
-                  li#type(type="1")
+                  li
                     a#1 Individual
                     a#2 Familiar
 
@@ -74,68 +74,87 @@ header
           .control-group
             .controls
               .span2
-                input#inputTel(type='text', placeholder='0-18', maxlength="2", style="width:100%");
+                input#age1(type='text', placeholder='0-18', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='19-23', maxlength="2", style="width:100%");
+                input#age2(type='text', placeholder='19-23', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='24-28', maxlength="2", style="width:100%");
+                input#age3(type='text', placeholder='24-28', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='29-33', maxlength="2", style="width:100%");
+                input#age4(type='text', placeholder='29-33', maxlength="2", style="width:100%");
 
           .control-group
             .controls
               .span2
-                input#inputTel(type='text', placeholder='34-38', maxlength="2", style="width:100%");
+                input#age5(type='text', placeholder='34-38', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='39-43', maxlength="2", style="width:100%");
+                input#age6(type='text', placeholder='39-43', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='44-48', maxlength="2", style="width:100%");
+                input#age7(type='text', placeholder='44-48', maxlength="2", style="width:100%");
               .span2.offset1
-                input#inputTel(type='text', placeholder='49-53', maxlength="2", style="width:100%");
+                input#age8(type='text', placeholder='49-53', maxlength="2", style="width:100%");
 
           .control-group
             .controls.input-validation
               .span2
-                input#inputTel(type='text', placeholder='+ 59', maxlength="2", style="width:100%");
+                input#age9(type='text', placeholder='+ de 59', maxlength="2", style="width:100%");
   .row-fluid
     .span12(style="text-align:center;margin-top:2%;")
-      a(style="width:10%").btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
-        //- .span3.offset1(style="margin-top:10%")
-        //-   .row-fluid
-        //-     .btn.btn-primary.btn-large Planos & Valores
-        //-   .row-fluid(style="margin-top:10%")
-        //-     a.btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
+      a#send(style="width:10%").btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
 
 #congrats.modal.hide.fade
-  .modal-header
-    h4#thanks 
   .modal-body
     h3 Em breve um de nossos consultores entrará em contato
   .modal-footer
     a#closeModal.btn.btn-primary="Fechar"
 
 script
-  //- $("a#consultant").on('click', function(){
-  //-   resetFields();
-  //-   $("#consultant-form").removeClass("hide");
-  //-   return false;
-  //- });
-
-  //- $("#online").on('click', function(){
-  //-   resetFields();
-  //-   $("#online-form").removeClass("hide");
-  //-   return false;
-  //- });
-
   $("#closeModal").on('click', function(){
     $("#congrats").modal('hide');
   });
 
-  $("#send").on('click', function(){
+  $("#send").on('click', function(e){
     //resolve this. better way to solve it
-    resetFields();
-    return false;
+    e.stopPropagation();
+    submit();
+    //- resetFields();
   });
+
+  function submit(){
+    //- var name=$("#inputNome").val().replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase();
+    var name=$("#inputNome").val().toUpperCase();
+    var mail=$("#inputEmail").val();
+    var phone1=$("#inputH").val();
+    var phone2=$("#inputCom").val();
+    var phone3=$("#inputCel").val();
+    var type=$("ul li a").attr('id');
+    var ages= {}
+    //- $("ul li a").attr('id');
+
+    //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
+    $.ajax({
+      type: "post",
+      url: "/plan",
+      data: JSON.stringify({
+        name: name,
+        email: mail,
+        phones: {
+          home:phone1,
+          com:phone2,
+          cel:phone3
+        },
+        type: type,
+        ages: {}
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        resetFields();
+      },  
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
+    });
+  }
 
   $("ul li a").on('click',function(){
     $("a#type").text($(this).text());
@@ -144,52 +163,13 @@ script
   });
 
   function resetFields(){
-    $("#thanks").text("");
     $("#inputNome").val("");
     $("#inputEmail").val("");
-    $("#inputTel").val("");
-    //- $("#consultant-form").addClass("hide");
-    //- $("#online-form").addClass("hide");
+    $("#inputH").val("");
+    $("#inputCom").val("");
+    $("#inputCel").val("");
+    $("a#type").text("Individual");
+    $("li#type").attr("type", 1);
+    $("a#type").append('<span class="caret"></span>');
+    for(var i=1;i<10;i++) $("#age" + i).val("");
   }
-
-  $(function() {
-      $("input").jqBootstrapValidation(
-        {
-          preventSubmit: true,
-          submitError: function($form, event, errors) {
-              // Here I do nothing, but you could do something like display 
-              // the error messages to the user, log, etc.
-          },
-          submitSuccess: function($form, event) {
-            var name=$("#inputNome").val().replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase();
-            var mail=$("#inputEmail").val();
-            var phone=$("#inputTel").val();
-
-            //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
-            $.ajax({
-              type: "post",
-              url: "/plan",
-              data: JSON.stringify({
-                name: name,
-                email: mail,
-                phone: phone
-              }),
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(data){
-                if(data.code==200){
-                  resetFields();
-                  //- $("#thanks").text("Obrigado, " + $("#inputNome").val().toUpperCase());
-                  //- $("#congrats").modal('show');
-                }
-              },
-              failure: function(errMsg) {
-                console.log(errMsg);
-              }
-            });
-
-            event.preventDefault();
-          },
-        }
-      );
-    });
