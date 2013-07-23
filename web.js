@@ -1,4 +1,4 @@
-//CSRF protection!
+  //CSRF protection!
 
 /**
  * Module dependencies.
@@ -13,7 +13,7 @@ var express = require('express')
   , less = require('less-middleware')
   , app = express();
 
-public_folder = __dirname + '/public';
+// public_folder = __dirname + '/public';
 
 // global variables
 app.set('port', process.env.PORT || 3000);
@@ -49,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', controllers._);
 app.get('/admin', controllers.admin);
 app.get('/logout', controllers.logout);
+app.get('/plans', controllers.plans);
 
 app.post('/login', controllers.login);
 app.post('/', controllers._);

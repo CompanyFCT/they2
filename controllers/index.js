@@ -72,3 +72,8 @@ exports.logout = function(req, res){
   redis.del("admin");
   res.redirect('/admin');
 };
+
+
+exports.plans = function(req, res){
+  res.render('plan');
+};
