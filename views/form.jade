@@ -17,12 +17,14 @@ header
                     p Encontre o plano de saúde mais adequado ao seu orçamento
                     i.icon-li.icon-ok
                     p Entre em contato com o consultor 11-987024849
+              .span6
+                .btn.btn-primary.btn-large(style="margin-top:5%") Planos & Valores
 
 .container-outer
   .row-fluid
     #consultant-form
       form#form-plan.form-horizontal(novalidate)
-        .span3
+        .span3.offset1
           .control-group
             .controls
               header.title-form
@@ -48,7 +50,7 @@ header
             .controls.input-validation
               input#inputTel(type='text', placeholder='Telefone celular', maxlength="15", pattern="[0-9]{8,12}", data-validation-required-message="Obrigatório", data-validation-pattern-message="Mínimo 5 números")
 
-        .span5
+        .span5.offset2
           .control-group
             .controls
               header.title-form
@@ -95,12 +97,14 @@ header
             .controls.input-validation
               .span2
                 input#inputTel(type='text', placeholder='+ 59', maxlength="2", style="width:100%");
-
-        .span3.offset1(style="margin-top:10%")
-          .row-fluid
-            .btn.btn-primary.btn-large Planos & Valores
-          .row-fluid(style="margin-top:10%")
-            a.btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
+  .row-fluid
+    .span12(style="text-align:center; margin-top:3%")
+      a.btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
+        //- .span3.offset1(style="margin-top:10%")
+        //-   .row-fluid
+        //-     .btn.btn-primary.btn-large Planos & Valores
+        //-   .row-fluid(style="margin-top:10%")
+        //-     a.btn.btn-success.btn-large(href="#congrats", role="button", data-toggle="modal") Enviar
 
 #congrats.modal.hide.fade
   .modal-header
