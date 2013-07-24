@@ -27,5 +27,10 @@ schema.statics.save = function(json, cb){
   this(json).save(function (errSave) { cb(errSave); });
 }
 
-module.exports = mongoose.model('User', schema);
+schema.statics.removeIds = function(ids){
+  // User.remove().where("_id").in(req.body.ids).exec();
+  // User.remove({_id:{$in:req.body.ids}},function(e,d){});
+  this.remove({_id:{$in:ids}},function(e,d){});
+}
 
+module.exports = mongoose.model('User', schema);

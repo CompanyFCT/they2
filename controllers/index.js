@@ -1,5 +1,5 @@
 //FIXME => REDUNTANT REDIS
-//FIXME => REMOVE COOKIE
+//FIXME => REMOVE COOKIE or SECURITY IT
 
 /*
  * GET home page.
@@ -9,6 +9,7 @@
 // var path = require('path')
 
 var User = require('../models/user.js');
+var Admin = require('../models/admin.js');
 var nuuid = require('node-uuid');
 var redis=null;
 
@@ -48,7 +49,7 @@ exports.plan = function(req, res){
 
 exports.admin = function(req, res){
   redis.get("admin", function (err, val) {
-    if(val==req.signedCookies.admin && req.signedCookies.admin){
+    if(val!=null/*val==req.signedCookies.admin && req.signedCookies.admin*/){
       User.all(function(docs){
         res.render('admin/index', { response: docs, logged: true });
       });
@@ -59,14 +60,25 @@ exports.admin = function(req, res){
 };
 
 exports.login = function(req, res){
-  if(req.body.user=='admin' && req.body.pass=='123456'){
-    var _uuid=nuuid.v1();
-    res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find another way! ;)
-    redis.setex("admin", 600, _uuid);//10min
-    res.send({});
-  }else{
-    res.send({status:404});
-  }
+  Admin.login(req.body.user, req.body.pass, function(docs){
+    if(docs.length==1){
+      var _uuid=nuuid.v1();
+      //res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find another way! ;)
+      redis.setex("admin", 600, _uuid);//10min
+      res.send({});
+    }else{
+      res.send({status:404});
+    }
+  });
+
+  // if(req.body.user=='admin' && req.body.pass=='123456'){
+  //   var _uuid=nuuid.v1();
+  //   res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find another way! ;)
+  //   redis.setex("admin", 600, _uuid);//10min
+  //   res.send({});
+  // }else{
+  //   res.send({status:404});
+  // }
 };
 
 exports.logout = function(req, res){
@@ -79,7 +91,6 @@ exports.plans = function(req, res){
 };
 
 exports.delUser = function(req, res){
-  // if(req.body.ids.length>0) User.remove().where("_id").in(req.body.ids).exec();
-  if(req.body.ids.length>0) User.remove({_id:{$in:req.body.ids}},function(e,d){});
+  if(req.body.ids.length>0) User.removeIds(req.body.ids);
   res.send({status:200});
 };
