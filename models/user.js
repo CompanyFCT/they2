@@ -1,10 +1,16 @@
-var mongoose = require('mongoose'),
-validate = require('mongoose-validator').validate;
+var mongoose = require('mongoose');
+// validate = require('mongoose-validator').validate;
 
 var schema = new mongoose.Schema({
-  name: {type: String, required: true, validate: validate({message: "Exceeded maxlength"}, 'len', 5, 50)},
-  email: {type: String, required: true, validate: validate({message: "Exceeded maxlength"}, 'len', 5, 50)},
-  phone: {type: String, required: true, validate: validate({message: "Exceeded maxlength"}, 'len', 5, 15)},
+  name: {type: String},
+  email: {type: String},
+  type: {type: String},
+  phones: {
+  	home: {type: String},
+  	com: {type: String},
+  	cel: {type: String}
+  },
+  ages: {},
   when: {type: Date, default: Date.now, required: true}
 });
 
@@ -15,6 +21,10 @@ schema.statics.all = function(cb){
    if(err) {}// handle errors! 
    else{cb(docs);} 
  });
+}
+
+schema.statics.save = function(json, cb){
+  this(json).save(function (errSave) { cb(errSave); });
 }
 
 module.exports = mongoose.model('User', schema);

@@ -50,6 +50,7 @@ app.get('/', controllers._);
 app.get('/admin', controllers.admin);
 app.get('/logout', controllers.logout);
 app.get('/plans', controllers.plans);
+app.delete('/users', controllers.delUser);
 
 app.post('/login', controllers.login);
 app.post('/', controllers._);

@@ -62,7 +62,7 @@ header
                 a#type.btn.dropdown-toggle(data-toggle="dropdown") Individual
                   span.caret
                 ul.dropdown-menu
-                  li
+                  li#type(type="Individual")
                     a#1 Individual
                     a#2 Familiar
 
@@ -74,28 +74,30 @@ header
           .control-group
             .controls
               .span2
-                input#age1(type='text', placeholder='0-18', maxlength="2", style="width:100%");
+                input#age0(type='text', placeholder='0-18', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age2(type='text', placeholder='19-23', maxlength="2", style="width:100%");
+                input#age1(type='text', placeholder='19-23', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age3(type='text', placeholder='24-28', maxlength="2", style="width:100%");
+                input#age2(type='text', placeholder='24-28', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age4(type='text', placeholder='29-33', maxlength="2", style="width:100%");
+                input#age3(type='text', placeholder='29-33', maxlength="2", style="width:100%");
 
           .control-group
             .controls
               .span2
-                input#age5(type='text', placeholder='34-38', maxlength="2", style="width:100%");
+                input#age4(type='text', placeholder='34-38', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age6(type='text', placeholder='39-43', maxlength="2", style="width:100%");
+                input#age5(type='text', placeholder='39-43', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age7(type='text', placeholder='44-48', maxlength="2", style="width:100%");
+                input#age6(type='text', placeholder='44-48', maxlength="2", style="width:100%");
               .span2.offset1
-                input#age8(type='text', placeholder='49-53', maxlength="2", style="width:100%");
+                input#age7(type='text', placeholder='49-53', maxlength="2", style="width:100%");
 
           .control-group
             .controls.input-validation
               .span2
+                input#age8(type='text', placeholder='54-58', maxlength="2", style="width:100%");
+              .span2.offset1
                 input#age9(type='text', placeholder='+ de 59', maxlength="2", style="width:100%");
   .row-fluid
     .span12(style="text-align:center;margin-top:2%;")
@@ -116,7 +118,8 @@ script
     //resolve this. better way to solve it
     e.stopPropagation();
     submit();
-    //- resetFields();
+    resetFields();
+    $("#congrats").modal('show');
   });
 
   function submit(){
@@ -126,9 +129,9 @@ script
     var phone1=$("#inputH").val();
     var phone2=$("#inputCom").val();
     var phone3=$("#inputCel").val();
-    var type=$("ul li a").attr('id');
-    var ages= {}
-    //- $("ul li a").attr('id');
+    var type=$("li#type").attr('type');
+    var ages={};
+    for(var i=0;i<10;i++) ages[i] = $("input#age"+i).val();
 
     //resolve this. better way to solve it. ajax.. success/fail.. messages.. etc
     $.ajax({
@@ -143,12 +146,12 @@ script
           cel:phone3
         },
         type: type,
-        ages: {}
+        ages: ages
       }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data){
-        resetFields();
+        console.log(data);
       },  
       failure: function(errMsg) {
         console.log(errMsg);
@@ -159,7 +162,7 @@ script
   $("ul li a").on('click',function(){
     $("a#type").text($(this).text());
     $("a#type").append('<span class="caret"></span>');
-    $("li#type").attr('type',$(this).attr('id'));
+    $("li#type").attr('type',$(this).text());
   });
 
   function resetFields(){
@@ -169,7 +172,7 @@ script
     $("#inputCom").val("");
     $("#inputCel").val("");
     $("a#type").text("Individual");
-    $("li#type").attr("type", 1);
+    $("li#type").attr("type", "Individual");
     $("a#type").append('<span class="caret"></span>');
-    for(var i=1;i<10;i++) $("#age" + i).val("");
+    for(var i=0;i<10;i++) $("#age" + i).val("");
   }

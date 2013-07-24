@@ -32,19 +32,18 @@ exports.plan = function(req, res){
     name: req.body.name.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ').toUpperCase(), //fulltrim
     email: req.body.email,
     phones: req.body.phones,
-    type: req.body.type
+    type: req.body.type,
+    ages: req.body.ages
   };
 
-  new User(json).save(function (errSave) {
-    if (errSave){
+  User.save(json,function(err){
+    if (err){
       console.log ('Error on save!' + errSave);
       res.send({code:500});
     }else{
       res.send({code:200});
-    }
+    }    
   });
-
-  res.send({code:200})
 };
 
 exports.admin = function(req, res){
@@ -62,9 +61,8 @@ exports.admin = function(req, res){
 exports.login = function(req, res){
   if(req.body.user=='admin' && req.body.pass=='123456'){
     var _uuid=nuuid.v1();
-    res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find other way! ;)
+    res.cookie("admin", _uuid, {signed: true}); //vulnerability here.. find another way! ;)
     redis.setex("admin", 600, _uuid);//10min
-
     res.send({});
   }else{
     res.send({status:404});
@@ -76,8 +74,12 @@ exports.logout = function(req, res){
   res.redirect('/admin');
 };
 
-
-
 exports.plans = function(req, res){
   res.render('plan');
+};
+
+exports.delUser = function(req, res){
+  // if(req.body.ids.length>0) User.remove().where("_id").in(req.body.ids).exec();
+  if(req.body.ids.length>0) User.remove({_id:{$in:req.body.ids}},function(e,d){});
+  res.send({status:200});
 };

@@ -19,17 +19,17 @@ var schema = new mongoose.Schema({
 module.exports = mongoose.model('Operator', schema);
 
 /*
-
+schema document!
 {
-	:name => 'x',
+	:name => String,
 	:planos => [{
-		:nome => titulo.text,
+		:nome => String,
 		:tipo => [{
-			:categoria => plano.text,
-			:acomodacao => acomodacao.text,
+			:categoria => String,
+			:acomodacao => String,
 			:precos => [{
-			 		:idade => age.xpath('.//td[@class="fundo_subtitulo"]//div').text,
-			 		:preco => age.xpath(".//td[@class='fonte_normal'][position()=#{index-1}]//div").text
+			 		:idade => String,
+			 		:preco => Number
 				}
 			]
 		}]	
