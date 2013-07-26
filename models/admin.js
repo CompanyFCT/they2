@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var crypto = require('crypto');
+var mongoose = require('mongoose'),
+CryptUtils = require('../base/cryptutils.js');
 
 var schema = new mongoose.Schema({
   name: {type: String},
@@ -11,8 +11,7 @@ var schema = new mongoose.Schema({
 
 // login
 schema.statics.login = function(u,p,cb){
-  var encP=crypto.createHash('md5').update(p).digest("hex");
-  this.find({$and : [{user:u} , {pass:encP}] }, function(err,docs){ cb(docs); });
+  this.find({$and : [{user:u} , {pass:CryptUtils.md5hex(p)}] }, function(err,docs){ cb(docs); });
 }
 
 module.exports = mongoose.model('Admin', schema);

@@ -1,4 +1,4 @@
-  //CSRF protection!
+  //FIXME => CSRF protection!
 
 /**
  * Module dependencies.
@@ -12,8 +12,6 @@ var express = require('express')
   , path = require('path')
   , less = require('less-middleware')
   , app = express();
-
-// public_folder = __dirname + '/public';
 
 // global variables
 app.set('port', process.env.PORT || 3000);
@@ -36,37 +34,25 @@ app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// function checkAuth(req, res, next) {
-//   if (!req.session.logged) {
-//     res.send({status:404});
-//   } else {
-//     next();
-//   }
-// }
-
 //register routes
 app.get('/', controllers._);
-app.get('/admin', controllers.admin);
+app.get('/admin', checkAuth, controllers.admin);
 app.get('/logout', controllers.logout);
 app.get('/plans', controllers.plans);
-app.delete('/users', controllers.delUser);
+
+app.delete('/users', checkAuth, controllers.delUser);
 
 app.post('/login', controllers.login);
 app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 
-
-// if ('development' == app.get('env')) {
-//   app.use(express.errorHandler());
-//   // mongoose.connect('mongodb://localhost/buyme');
-//   // jbkpp#123
-//   // mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
-//   // mongoose.connect('mongodb://heroku_app15611687:jbkpp#123@ds029328.mongolab.com:29328/heroku_app15611687');
-// } 
-// else if ('production' == app.get('env')) {
-//   mongoose.connect(process.env.MONGOLAB_URI);
-// } 
+function checkAuth(req, res, next) {
+  if (!req.session.user_id) {
+    res.render('admin/index');
+  } else {
+    next();
+  }
+}
 
 //register and config mongo
 var mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/planovida';
