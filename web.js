@@ -47,11 +47,7 @@ app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 
 function checkAuth(req, res, next) {
-  if (!req.session.user_id) {
-    res.render('admin/index');
-  } else {
-    next();
-  }
+  !req.session.user_id ? res.render('admin/index') : next();
 }
 
 //register and config mongo
