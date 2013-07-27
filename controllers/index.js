@@ -27,12 +27,19 @@ exports.plan = function(req, res){
     }    
   });
 };
-
-exports.admin = function(req, res){
-  console.log(req);
+  
+exports.main = function(req, res){
   User.all(function(docs){
-    res.render('admin/index', { response: docs, logged: true });
+    res.render('admin/main', { response: docs });
   });
+};
+
+exports.index = function(req, res){
+  if(req.session.user_id){
+    res.redirect('admin/main');
+  }else{
+    res.render('admin/index',{error:false});
+  }
 };
 
 exports.login = function(req, res){
@@ -40,15 +47,16 @@ exports.login = function(req, res){
     if(docs.length==1){
       req.session.user_id = docs[0]._id;
       req.session.cookie.maxAge = 3600000;//1hour!
-      res.send({});
+      res.redirect('admin/main');
     }else{
-      res.send({status:404});
+      res.render('admin/index',{error:true});
     }
   });
 };
 
 exports.logout = function(req, res){
-  delete req.session.user_id
+  delete req.session.user_id;
+  delete req.session.access;
   res.redirect('/admin');
 };
 

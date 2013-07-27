@@ -1,10 +1,5 @@
   //FIXME => CSRF protection!
 
-/**
- * Module dependencies.
- */
-
-
 var express = require('express')
   , mongoose = require('mongoose')
   , controllers = require('./controllers/index')
@@ -37,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //register routes
 app.get('/', controllers._);
-app.get('/admin', checkAuth, controllers.admin);
+app.get('/admin', controllers.index);
+app.get('/admin/main', checkAuth, controllers.main);
 app.get('/logout', controllers.logout);
 app.get('/plans', controllers.plans);
 
@@ -48,8 +44,7 @@ app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 
 function checkAuth(req, res, next) {
-  console.log(req);
-  !req.session.user_id ? res.render('admin/index') : next();
+  !req.session.user_id ? res.render('admin/index', {error:false}) : next();
 }
 
 //register and config mongo

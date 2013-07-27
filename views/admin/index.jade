@@ -7,8 +7,19 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
 
   body
-    - if (typeof(logged)!="undefined" && logged)
-      include content
+    #login.modal.show
+      .modal-header
+        h4 Login
+      .modal-body
+        form.form-horizontal(action="login", method="POST")
+          .container-form
+            .control-group(style="text-align:center;")
+              input#user(type='text', placeholder='usuário',name="user")
 
-    - else
-      include login
+            .control-group(style="text-align:center;")
+              input#pass(type='password', placeholder='senha',name="pass")
+
+            .form-actions(style="border-top:0px;background-color:#fff;padding-left:0;text-align:center;")
+              input.btn.btn-primary.btn-large(type='submit') Login
+      #modalFooter.modal-footer(class="#{error ? '' : 'hide'}")
+        p.login-wrong Usuário ou senha inválidos
