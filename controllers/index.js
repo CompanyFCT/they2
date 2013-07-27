@@ -29,6 +29,7 @@ exports.plan = function(req, res){
 };
 
 exports.admin = function(req, res){
+  console.log(req);
   User.all(function(docs){
     res.render('admin/index', { response: docs, logged: true });
   });

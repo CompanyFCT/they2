@@ -11,6 +11,7 @@ var express = require('express')
   , locals = require('./base/locals').setLocals
   , path = require('path')
   , less = require('less-middleware')
+  , uuid = require('node-uuid')
   , app = express();
 
 // global variables
@@ -25,8 +26,8 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 
-app.use(express.cookieParser('12345678'));
-app.use(express.session({ secret: '123456' }));
+app.use(express.cookieParser(uuid.v1()));
+app.use(express.session({ secret: uuid.v1() }));
 
 app.use(express.methodOverride());
 app.use(locals);
@@ -47,6 +48,7 @@ app.post('/', controllers._);
 app.post('/plan', controllers.plan);
 
 function checkAuth(req, res, next) {
+  console.log(req);
   !req.session.user_id ? res.render('admin/index') : next();
 }
 
