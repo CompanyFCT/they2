@@ -29,7 +29,7 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
 
             li.divider
             li
-              a(href="/logout") Sair
+              a(href="/admin/logout") Sair
 
         .span10(style="margin-top:20px;")
           table.table.table-bordered
@@ -80,7 +80,7 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
       function delUsers(ids){
         $.ajax({
           type: "delete",
-          url: "/users",
+          url: "/admin/users",
           data: JSON.stringify({
             ids: ids
           }),

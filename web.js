@@ -19,29 +19,29 @@ app.set('facebook', {name: 'Plano de Vidas', app_id: '695841343765448', app_secr
 //register middlewares
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
 
 app.use(express.cookieParser(uuid.v1()));
 app.use(express.session({ secret: uuid.v1() }));
-
+app.use(express.compress());
 app.use(express.methodOverride());
+app.use(express.bodyParser());
 app.use(locals);
 app.use(app.router);  
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//register routes
-app.get('/', controllers._);
+// admin's routes
 app.get('/admin', controllers.index);
 app.get('/admin/main', checkAuth, controllers.main);
-app.get('/logout', controllers.logout);
-app.get('/plans', controllers.plans);
+app.get('/admin/logout', checkAuth, controllers.logout);
+app.post('/admin/login', controllers.login);
+app.delete('/admin/users', checkAuth, controllers.delUser);
 
-app.delete('/users', checkAuth, controllers.delUser);
-
-app.post('/login', controllers.login);
-app.post('/', controllers._);
+//main routes
+app.get('/', controllers._);
+app.post('/', controllers._);//facebook requires..
 app.post('/plan', controllers.plan);
+app.get('/plans', controllers.plans);
 
 function checkAuth(req, res, next) {
   !req.session.user_id ? res.render('admin/index', {error:false}) : next();

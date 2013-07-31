@@ -29,6 +29,9 @@ exports.plan = function(req, res){
 };
   
 exports.main = function(req, res){
+  // console.log(req);
+  console.log(req.fresh);
+  console.log(req.stale);
   User.all(function(docs){
     res.render('admin/main', { response: docs });
   });
@@ -46,7 +49,7 @@ exports.login = function(req, res){
   Admin.login(req.body.user, req.body.pass, function(docs){
     if(docs.length==1){
       req.session.user_id = docs[0]._id;
-      req.session.cookie.maxAge = 3600000;//1hour!
+      // req.session.cookie.maxAge = 3600000;//1hour!
       res.redirect('admin/main');
     }else{
       res.render('admin/index',{error:true});
@@ -55,16 +58,23 @@ exports.login = function(req, res){
 };
 
 exports.logout = function(req, res){
-  delete req.session.user_id;
-  delete req.session.access;
+  clearSession(req);
   res.redirect('/admin');
-};
-
-exports.plans = function(req, res){
-  res.render('plan');
 };
 
 exports.delUser = function(req, res){
   if(req.body.ids.length>0) User.removeIds(req.body.ids);
   res.send({status:200});
 };
+
+exports.delUser = function(req, res){
+  res.render('');
+};
+
+exports.plans = function(req, res){
+  res.render('plans');
+};
+
+function clearSession(req){
+  delete req.session.user_id;
+}
