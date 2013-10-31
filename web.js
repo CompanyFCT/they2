@@ -31,31 +31,31 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // admin's routes
-app.get('/admin', controllers.index);
-app.get('/admin/main', checkAuth, controllers.main);
-app.get('/admin/logout', checkAuth, controllers.logout);
-app.post('/admin/login', controllers.login);
-app.delete('/admin/users', checkAuth, controllers.delUser);
+// app.get('/admin', controllers.index);
+// app.get('/admin/main', checkAuth, controllers.main);
+// app.get('/admin/logout', checkAuth, controllers.logout);
+// app.post('/admin/login', controllers.login);
+// app.delete('/admin/users', checkAuth, controllers.delUser);
 
 //main routes
 app.get('/', controllers._);
-app.post('/', controllers._);//facebook requires..
-app.post('/plan', controllers.plan);
-app.get('/plans', controllers.plans);
+app.post('/', controllers._);//facebook needs..
+// app.post('/plan', controllers.plan);
+// app.get('/plans', controllers.plans);
 
-function checkAuth(req, res, next) {
-  !req.session.user_id ? res.render('admin/index', {error:false}) : next();
-}
+// function checkAuth(req, res, next) {
+//   !req.session.user_id ? res.render('admin/index', {error:false}) : next();
+// }
 
-//register and config mongo
-var mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/planovida';
-mongoose.connect(mongoURI, function (err, res) {
-  if (err) { 
-    console.log ('ERROR connecting to: ' + mongoURI + '. ' + err);
-  } else {
-    console.log ('Succeeded connected to: ' + mongoURI);
-  }
-});
+// //register and config mongo
+// var mongoURI = process.env.MONGOHQ_URL || 'mongodb://localhost/planovida';
+// mongoose.connect(mongoURI, function (err, res) {
+//   if (err) { 
+//     console.log ('ERROR connecting to: ' + mongoURI + '. ' + err);
+//   } else {
+//     console.log ('Succeeded connected to: ' + mongoURI);
+//   }
+// });
 
 // server listening
 app.listen(app.get('port'), function(){
