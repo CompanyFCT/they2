@@ -1,12 +1,10 @@
   //FIXME => CSRF protection!
 
 var express = require('express')
-  , mongoose = require('mongoose')
   , controllers = require('./controllers/index')
   , locals = require('./base/locals').setLocals
   , path = require('path')
   , less = require('less-middleware')
-  , uuid = require('node-uuid')
   , app = express();
 
 // global variables
@@ -20,8 +18,8 @@ app.set('facebook', {name: 'Plano de Vidas', app_id: '695841343765448', app_secr
 app.use(express.favicon());
 app.use(express.logger('dev'));
 
-app.use(express.cookieParser(uuid.v1()));
-app.use(express.session({ secret: uuid.v1() }));
+// app.use(express.cookieParser(uuid.v1()));
+// app.use(express.session({ secret: uuid.v1() }));
 app.use(express.compress());
 app.use(express.methodOverride());
 app.use(express.bodyParser());
